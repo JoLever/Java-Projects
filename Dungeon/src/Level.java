@@ -22,7 +22,7 @@ public class Level {
 	 * @param numLevel the number to read in from
 	 * @throws FileNotFoundException
 	 */
-	public void generateLevel(int numLevel) throws FileNotFoundException {
+	public void generateLevel(int numLevel)  {
 		int y;
 		
 		try {

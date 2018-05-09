@@ -6,7 +6,7 @@ import java.io.Serializable;
  * @author Jordan Lever
  *
  */
-public class Hero extends Character {
+public class Hero extends Character implements Serializable {
 	/**
 	*This is the Array list of items
 	**/

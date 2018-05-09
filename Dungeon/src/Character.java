@@ -4,7 +4,7 @@ import java.io.Serializable;
  * @author Jordan Lever
  *
  */
-public abstract class Character {
+public abstract class Character implements Serializable {
 	/**
 	 * The string containing name
 	 */
@@ -105,10 +105,11 @@ public abstract class Character {
 	 * This method heals the character to full
 	 * @param h the int to heal by
 	 */
-	public void heal(int h) {
+	public void heal(int hp) {
 		if (hp < maxhp) {
 			hp = maxhp;
 		}
+		
 	}
 	/**
 	 * This method updates the hp 

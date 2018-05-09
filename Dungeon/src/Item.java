@@ -4,7 +4,7 @@ import java.io.Serializable;
  * @author Jordan Lever
  *
  */
-public class Item {
+public class Item implements Serializable{
 	/**
 	 * The int containing goldVal
 	 */

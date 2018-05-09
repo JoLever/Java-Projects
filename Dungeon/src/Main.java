@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.Scanner;
 import java.awt.Point;
+import java.util.ArrayList;
 
 /**
  * This is the testbench for dungeon game 
@@ -9,16 +10,17 @@ import java.awt.Point;
  */
 public class Main {
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		boolean finished = false;
+		ArrayList<Item> items = new ArrayList<Item>();
 		Level l = new Level();
 		EnemyGenerator e = new EnemyGenerator();
 		ItemGenerator i = new ItemGenerator();
-		
 		int levelCount = 1; 
-		String name = null;
-		Hero h = new Hero(name,"...",null);
+		//l.generateLevel(1);
+		Hero h = null;
+		
 		while (!finished) {
 			menu();
 			int choice = menuChoice(1, 2);
@@ -28,26 +30,27 @@ public class Main {
 				int answer = menuChoice(1,2);
 				if (answer == 1) {
 					 h = readDat();
-					 int levelStart = h.getLevel();
-					 l.generateLevel(levelStart);
+					l.generateLevel(h.getLevel());
+				
 					Point start = l.findStartLocation();
-					l.displayMap(start);
+					h.setLocation(start);
+					l.displayMap(h.getLocation());
 					
-					boolean flag = true;
 				} else {
 			
 				System.out.println("What is your name traveler");
-				String names = scanner.nextLine();
+				String name = scanner.nextLine();
 				System.out.println("What is your catch phrase");
 				String quip = scanner.nextLine();
+				l.generateLevel(1);
 				Point start = l.findStartLocation();
-				 h = new Hero(names,quip,start);
-				 int levelStart = h.getLevel();
-				 l.generateLevel(levelStart);
-				Point p = h.getLocation();
-				l.displayMap(p);
-				boolean flag = true;
+				 h = new Hero(name,quip,start);
 				
+				Point p4 = h.getLocation();
+				l.displayMap(p4);
+				
+				}
+				boolean flag = true;
 				do{
 					
 					travelMenu();
@@ -60,8 +63,8 @@ public class Main {
 						}
 						
 						else {
-						
-						 p = h.getLocation();
+						//h.goNorth(l);
+						Point p = h.getLocation();
 						l.displayMap(p);
 						if(l.getRoom(p)== 'm'){
 							h.display();
@@ -217,7 +220,7 @@ public class Main {
 						
 						else {
 						//h.goSouth(l);
-						 p = h.getLocation();
+						Point p = h.getLocation();
 						l.displayMap(p);
 						if(l.getRoom(p)== 'm'){
 							h.display();
@@ -354,7 +357,7 @@ public class Main {
 						
 						else {
 						//h.goWest(l);
-						 p = h.getLocation();
+						Point p = h.getLocation();
 						l.displayMap(p);
 						if(l.getRoom(p)== 'm'){
 							h.display();
@@ -491,7 +494,7 @@ public class Main {
 						else {
 							
 						//h.goEast(l);
-						 p = h.getLocation();
+						Point p = h.getLocation();
 						l.displayMap(p);
 						if(l.getRoom(p)== 'm'){
 							h.display();
@@ -611,18 +614,19 @@ public class Main {
 							}
 							else{
 								System.out.println("No items to sell");
+							
 							}
 						}
-
+						
 							}
-						}
-					
-
+					}
+				
+				
 					} while (flag != false);
 
-				}
 				
-
+		
+		
 				break;
 
 			case 2:
@@ -730,6 +734,8 @@ public class Main {
 		   try {
 		    ObjectInputStream in = new ObjectInputStream( new FileInputStream(f));
 		    h = (Hero) in.readObject();
+		    Point p = new Point(0,4);
+		    h.setLocation(p);
 		    in.close();
 		   } catch (IOException e) {
 		    System.out.println("Error processing file.");

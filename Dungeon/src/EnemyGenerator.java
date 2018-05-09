@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 /**
- * This class creates the enemeis for use in other classes
+ * This class creates the enemies for use in other classes
  * @author Jordan Lever
  *
  */
@@ -15,9 +15,10 @@ private ArrayList<Enemy> enemyList;
  * This method reads in and adds to the enemyList 
  * @throws FileNotFoundException
  */
-public EnemyGenerator() throws FileNotFoundException{
+public EnemyGenerator() {
 	enemyList = new ArrayList<Enemy>(7);
-	Scanner read = new Scanner(new File("EnemyList.txt"));
+	try{
+		Scanner read = new Scanner(new File("EnemyList.txt"));
 	do{
 	
 		String line = read.nextLine();
@@ -28,19 +29,22 @@ public EnemyGenerator() throws FileNotFoundException{
 		Enemy e = new Enemy(name,quip,hp,0,1,null);
 		enemyList.add(e);
 		
-		
 	}
 	while(read.hasNextLine());
-	//System.out.println(enemyList);
-	
+} catch (FileNotFoundException e) {
+	System.out.println("FNF");
 }
+	 }
+	
+	
+
 	/**
 	 * This method creates a enemy at random with stats based on level
 	 * @param level the level of the enemy
 	 * @return the enemy that was generated
 	 * @throws FileNotFoundException
 	 */
-	public Enemy generateEnemy(int level) throws FileNotFoundException {
+	public Enemy generateEnemy(int level) {
 		int random =  (int)( Math.random()*(7) );
 		Enemy e = enemyList.get(random);
 		String name =  e.getName();

@@ -33,7 +33,7 @@ public class Computer implements Serializable {
 		int rCount = 0;
 		int pCount = 0;
 		int sCount = 0;
-		int max = 0;
+
 		Pattern pat = new Pattern(p);
 		String choice = "";
 		if (map.containsKey(pat) && !map.isEmpty()) {
@@ -60,39 +60,42 @@ public class Computer implements Serializable {
 				choice = "r";
 			} else if (rCount == pCount && rCount > sCount) {
 				int random = (int) (Math.random() * 3) + 1;
-				if (random == 1)
+				if (random == 1) {
 					choice = "r";
-				else if (random == 2)
+				} else if (random == 2) {
 					choice = "p";
-				else if (random == 3)
+				} else if (random == 3) {
 					choice = "s";
-
+				}
 			} else if (rCount == sCount && rCount > pCount) {
 				int random = (int) (Math.random() * 3) + 1;
-				if (random == 1)
+				if (random == 1) {
 					choice = "r";
-				else if (random == 2)
+				} else if (random == 2) {
 					choice = "p";
-				else if (random == 3)
+				} else if (random == 3) {
 					choice = "s";
+				}
 			} else if (pCount == sCount && pCount > rCount) {
 				int random = (int) (Math.random() * 3) + 1;
-				if (random == 1)
+				if (random == 1) {
 					choice = "r";
-				else if (random == 2)
+				} else if (random == 2) {
 					choice = "p";
-				else if (random == 3)
+				} else if (random == 3) {
 					choice = "s";
+				}
 			}
 
 		} else {
 			int random = (int) (Math.random() * 3) + 1;
-			if (random == 1)
+			if (random == 1) {
 				choice = "r";
-			else if (random == 2)
+			} else if (random == 2) {
 				choice = "p";
-			else if (random == 3)
+			} else if (random == 3) {
 				choice = "s";
+			}
 
 		}
 		return choice;
@@ -108,7 +111,7 @@ public class Computer implements Serializable {
 	 */
 	public void storePattern(String p) {
 		Pattern p1 = new Pattern(p);
-		Integer frequency = map.get(p);
+		Integer frequency = map.get(p1);
 		if (frequency == null) {
 			map.put(p1, 1);
 

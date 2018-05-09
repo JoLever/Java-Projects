@@ -38,9 +38,9 @@ public class ItemGenerator {
 	public Item generateItem() {
 		int random = (int) (Math.random() * (8));
 		Item x = itemList.get(random);
-		x.getName();
+		
 
-		return x;
+		return new Item(x.getName(),x.getVal());
 
 	}
 }
