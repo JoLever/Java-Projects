@@ -1,5 +1,2 @@
 # Java-Projects
-# Web-Development
-# Web-Development
-# Web-Development
-# WebDevelopment
+This Repository holds example codes of Java Projects.
